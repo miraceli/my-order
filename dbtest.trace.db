@@ -1,0 +1,23 @@
+2020-02-12 20:20:40 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM USER 
+
+DELET *[*] FROM USER"; SQL statement:
+SELECT * FROM USER 
+
+delet * from user [42000-200]
+2020-02-12 20:20:52 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELET[*] * FROM USER"; expected "DELETE, DROP, DECLARE, DEALLOCATE"; SQL statement:
+delet * from USER [42001-200]
+2020-02-12 20:21:04 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELET[*] * FROM USER WHERE ID > 0"; expected "DELETE, DROP, DECLARE, DEALLOCATE"; SQL statement:
+delet * from USER where id > 0 [42001-200]
+2020-02-12 20:21:13 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELET[*] FROM USER WHERE ID > 0"; expected "DELETE, DROP, DECLARE, DEALLOCATE"; SQL statement:
+delet from USER where id > 0 [42001-200]
+2020-02-12 20:22:34 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM USER 
+
+DELETE FROM[*] USER"; SQL statement:
+SELECT * FROM USER 
+
+delete from USER [42000-200]

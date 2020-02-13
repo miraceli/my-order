@@ -6,7 +6,6 @@ public class RestaurantResponseDto {
     private String name;
     private String email;
     private String phone;
-    private String address;
 
     public Integer getId() {
         return id;
@@ -44,12 +43,4 @@ public class RestaurantResponseDto {
         return this;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public RestaurantResponseDto setAddress(String address) {
-        this.address = address;
-        return this;
-    }
 }

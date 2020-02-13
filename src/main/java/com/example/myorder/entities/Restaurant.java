@@ -19,9 +19,6 @@ public class Restaurant {
     @Column(name = "EMAIL", nullable = false)
     private String email;
 
-    @Column(name = "ADDRESS", nullable = false)
-    private String address;
-
     public Integer getId() {
         return id;
     }
@@ -58,12 +55,4 @@ public class Restaurant {
         return this;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public Restaurant setAddress(String address) {
-        this.address = address;
-        return this;
-    }
 }

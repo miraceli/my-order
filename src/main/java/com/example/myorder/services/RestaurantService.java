@@ -20,8 +20,7 @@ public class RestaurantService {
         Restaurant restaurant = new Restaurant()
                 .setName(createRestaurantDto.getName())
                 .setEmail(createRestaurantDto.getEmail())
-                .setPhone(createRestaurantDto.getPhone())
-                .setAddress(createRestaurantDto.getAddress());
+                .setPhone(createRestaurantDto.getPhone());
 
         restaurantRepository.save(restaurant);
     }
@@ -34,9 +33,7 @@ public class RestaurantService {
                 .setId(restaurant.getId())
                 .setName(restaurant.getName())
                 .setEmail(restaurant.getEmail())
-                .setPhone(restaurant.getPhone())
-                .setAddress(restaurant.getAddress());
-
+                .setPhone(restaurant.getPhone());
 
     }
 

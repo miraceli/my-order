@@ -18,11 +18,6 @@ public class CreateRestaurantDto {
     @ApiModelProperty(value = "Telefone")
     private String phone;
 
-    @NotEmpty
-    @ApiModelProperty(value = "Endereço")
-    private String address;
-
-
     public String getName() {
         return name;
     }
@@ -50,12 +45,4 @@ public class CreateRestaurantDto {
         return this;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public CreateRestaurantDto setAddress(String address) {
-        this.address = address;
-        return this;
-    }
 }

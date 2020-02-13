@@ -13,7 +13,7 @@ public class UserMapper {
         return modelMapper.map(createUserDto, User.class);
     }
 
-    public static UserResponseDto toResponse (User user){
+    public static UserResponseDto toResponseDto(User user){
         return modelMapper.map(user, UserResponseDto.class);
     }
 }
