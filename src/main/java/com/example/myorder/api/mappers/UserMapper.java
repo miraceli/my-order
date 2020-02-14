@@ -14,6 +14,7 @@ public class UserMapper {
     }
 
     public static UserResponseDto toResponseDto(User user){
+
         return modelMapper.map(user, UserResponseDto.class);
     }
 }

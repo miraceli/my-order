@@ -7,23 +7,23 @@ import javax.validation.constraints.NotEmpty;
 public class UserResponseDto {
 
     @NotEmpty
-    @ApiModelProperty(value = "$(User.create.id=ID do Usuário")
+    @ApiModelProperty(value = "${user.create.id}")
     private String id;
 
     @NotEmpty
-    @ApiModelProperty(value = "$(User.create.name=Nome")
+    @ApiModelProperty(value = "${user.create.name}")
     private String name;
 
     @NotEmpty
-    @ApiModelProperty(value = "$(User.create.email=Email")
+    @ApiModelProperty(value = "${user.create.email}")
     private String email;
 
     @NotEmpty
-    @ApiModelProperty(value = "$(User.create.phone=Telefone")
+    @ApiModelProperty(value = "${user.create.phone}")
     private String phone;
 
     @NotEmpty
-    @ApiModelProperty(value = "$(User.create.address=Endereço")
+    @ApiModelProperty(value = "${user.create.address}")
     private String address;
 
     public String getId() {
