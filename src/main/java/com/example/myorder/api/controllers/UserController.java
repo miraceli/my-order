@@ -1,10 +1,9 @@
 package com.example.myorder.api.controllers;
 
 import com.example.myorder.api.RestPath;
-import com.example.myorder.api.dtos.CreateRestaurantDto;
 import com.example.myorder.api.dtos.CreateUserDto;
-import com.example.myorder.api.dtos.RestaurantResponseDto;
 import com.example.myorder.api.dtos.UserResponseDto;
+import com.example.myorder.entities.User;
 import com.example.myorder.services.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiParam;
@@ -36,7 +35,7 @@ public class UserController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping()
-    public UserResponseDto get(@RequestParam @Param("id") Integer id){
+    public User get(@RequestParam @Param("id") Integer id){
         return userService.findById(id);
     }
 

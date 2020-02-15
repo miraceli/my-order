@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -20,45 +21,35 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public UserResponseDto create(CreateUserDto createUserDto){
-
+    public UserResponseDto create(CreateUserDto createUserDto) {
         validateUserEmail(createUserDto.getEmail());
 
         User user = userRepository.save(createUser(createUserDto));
+
         return UserMapper.toResponseDto(user);
     }
 
-    private User createUser(CreateUserDto createUserDto){
-        return new User()
-                .setName(createUserDto.getName())
-                .setEmail(createUserDto.getEmail())
-                .setPhone(createUserDto.getPhone())
-                .setAddress(createUserDto.getAddress())
-                .setPassword(createUserDto.getPassword());
+    public UserResponseDto findUserById(Integer id) {
+        User user = findById(id);
+
+        return UserMapper.toResponseDto(user);
     }
 
-    private void validateUserEmail (String email){
-        User user = userRepository.findByEmail(email);
-
-        if (user != null){
-            throw new AlreadyExistsRuntimeException("Já existe um usuário cadastrado com este e-mail.");
-        }
-    }
-
-    public UserResponseDto findById(Integer id) {
+    public User findById(Integer id) {
         Optional<User> user = userRepository.findById(id);
 
         if (!user.isPresent()){
-            throw new NotFoundException("Não existe usuário para o id " + id + ".");
+            throw new NotFoundException("Não existe usuário para o id: " + id);
         }
-        return UserMapper.toResponseDto(user.get());
+
+        return user.get();
     }
 
-    public List<UserResponseDto> listAll(){
+    public List<UserResponseDto> listAll() {
         List<User> users = userRepository.findAll();
         List<UserResponseDto> userResponseList = new ArrayList<>();
 
-        for (User user : users){
+        for (User user : users) {
             UserResponseDto userResponse = new UserResponseDto();
             userResponse.setName(user.getName());
             userResponse.setAddress(user.getAddress());
@@ -67,18 +58,46 @@ public class UserService {
 
             userResponseList.add(userResponse);
         }
+
         return userResponseList;
     }
 
-        /*JAVA*
-    public List<UserResponseDto> listAll() {
-        List<User> users = userRepository.findAll();
+    //JAVA 8
+//    public List<UserResponseDto> listAll() {
+//        List<User> users = userRepository.findAll();
+//
+//        users.stream().map(user -> new UserResponseDto()
+//                .setName(user.getName())
+//                .setEmail(user.getEmail())
+//                .setPhone(user.getPhone())
+//                .setAddress(user.getAddress()))
+//                .collect(Collectors.toList());
+//    }
 
-        users.stream().map(UserMapper::toResponseDto)
-                .collect(Collectors.toList());
+    //JAVA 8 e ModelMapper
+//    public List<UserResponseDto> listAll() {
+//        List<User> users = userRepository.findAll();
+//
+//        users.stream().map(UserMapper::toResponseDto)
+//                .collect(Collectors.toList());
+//    }
+
+    private User createUser(CreateUserDto createUserDto) {
+        return new User()
+                .setName(createUserDto.getName())
+                .setEmail(createUserDto.getEmail())
+                .setAddress(createUserDto.getAddress())
+                .setPassword(createUserDto.getPassword())
+                .setPhone(createUserDto.getPhone());
     }
-    */
+
+    private void validateUserEmail(String email) {
+        User user = userRepository.findByEmail(email);
+
+        if (user != null) {
+            throw new AlreadyExistsRuntimeException("já existe um usuário cadastrado com este email");
+        }
+    }
+
 
 }
-
-
